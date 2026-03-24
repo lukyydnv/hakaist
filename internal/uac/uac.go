@@ -1,15 +1,15 @@
 package Uac
 
 import (
-	"github.com/unf6/vryxen/pkg/utils/common"
 	"os"
 	"os/exec"
 	"syscall"
 	"unsafe"
 
+	"github.com/lukyydnv/hakaist/pkg/utils/common"
+
 	"golang.org/x/sys/windows/registry"
 )
-
 
 func CanElevate() bool {
 	var infoPointer uintptr

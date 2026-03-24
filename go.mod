@@ -1,4 +1,4 @@
-module github.com/unf6/vryxen
+module github.com/lukyydnv/hakaist
 
 go 1.24.2
 

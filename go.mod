@@ -8,6 +8,7 @@ require (
 	golang.design/x/clipboard v0.7.0
 	golang.org/x/crypto v0.45.0
 	golang.org/x/sys v0.38.0
+	golang.org/x/text v0.31.0
 	modernc.org/sqlite v1.37.0
 )
 

@@ -453,11 +453,12 @@ func GetHQGuilds(guilds []Guild, token string) (hqGuilds string) {
 
 func GetBilling(billing []Billing) (paymentMethods string) {
 	for _, method := range billing {
-		if method.Type == 1 {
+		switch method.Type {
+		case 1:
 			paymentMethods += "💳"
-		} else if method.Type == 2 {
+		case 2:
 			paymentMethods += "<:paypal:973417655627288666>"
-		} else {
+		default:
 			paymentMethods += "❓"
 		}
 	}

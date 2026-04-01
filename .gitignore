@@ -1,0 +1,9 @@
+node_modules/
+bot/
+dashboard/
+*.exe
+.railwayignore
+.dockerignore
+*.json
+Dockerfile
+*.js

